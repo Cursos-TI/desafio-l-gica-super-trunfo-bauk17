@@ -46,7 +46,7 @@ int main() {
     float primeiraDensidadePopulacional, segundaDensidadePopulacional;
     double primeiroPibPerCapita, segundoPibPerCapita;
     float primeiroSuperPoder, segundoSuperPoder;
-    int option;
+    int option1, option2;
 
     printf("Cadastro da primeira carta:\n");
     printf("Escolha um estado entre A-H: ");
@@ -134,9 +134,46 @@ int main() {
     printf("5 - Densidade Populacional\n");
     printf("6 - PIB per Capita\n");
     printf("Opção: ");
-    scanf("%d", &option);
+    scanf("%d", &option1);
 
-    switch (option) {
+    printf("\nAgora escolha OUTRA opção para comparar (diferente da anterior):\n");
+    do {
+        printf("Opção: ");
+        scanf("%d", &option2);
+
+        if (option2 == option1) {
+            printf("Você já escolheu essa opção! Escolha uma diferente.\n");
+        }
+    } while (option2 == option1);
+
+
+    switch (option1) {
+        case 1:
+            compararValores((double)populacaoPrimeiraCidade, (double)populacaoSegundaCidade, "População");
+            break;
+        case 2:
+            compararValores((double)primeiraArea, (double)segundaArea, "Área");
+            break;
+        case 3:
+            compararValores(pibPrimeiraCidade, pibSegundaCidade, "PIB");
+            break;
+        case 4:
+            compararValores((double)pontosTuristicosPrimeiraCidade, (double)pontosTuristicosSegundaCidade, "Pontos Turísticos");
+            break;
+        case 5:
+            compararDensidade(primeiraDensidadePopulacional, segundaDensidadePopulacional);
+            break;
+        case 6:
+            compararValores(primeiroPibPerCapita, segundoPibPerCapita, "PIB per Capita");
+            break;
+        default:
+            printf("Escolha uma opção válida entre 1 - 6!\n");
+            break;
+    }
+
+
+    // Comparação do segundo atributo
+    switch (option2) {
         case 1:
             compararValores((double)populacaoPrimeiraCidade, (double)populacaoSegundaCidade, "População");
             break;
